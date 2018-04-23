@@ -12,8 +12,8 @@ var UserSchema = Schema({
     password: String,
     role: String,
     image: String
-}, 
-//{ collection: NombreModelo }
+} 
+//,{ collection: NombreModelo }
 );
 
 module.exports = mongoose.model('User',UserSchema);
