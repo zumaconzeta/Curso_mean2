@@ -15,6 +15,8 @@ var UserSchema = Schema({
 } 
 //,{ collection: NombreModelo }
                         // Esto es una prueba de Git
+
+// esto es una prueba de vuelta 
 );
 
 module.exports = mongoose.model('User',UserSchema);
