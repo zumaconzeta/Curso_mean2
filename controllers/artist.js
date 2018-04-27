@@ -18,9 +18,7 @@ function getArtist(req, res){
                 res.status(200).send({artist});
             }
         }
-    }); 
-
-    res.status(200).send({message: 'Metodo getArtist del controlado artist.js'});
+    });  
 }
 
 function saveArtist (req,res){
@@ -45,7 +43,12 @@ function saveArtist (req,res){
     });
 }
 
+function getPrueba(req,res){
+    res.status(200).send({message: 'Esto es una prueba2'});
+}
+
 module.exports ={
+        getPrueba,
         getArtist,
         saveArtist
 };
