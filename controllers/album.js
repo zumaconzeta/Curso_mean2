@@ -47,9 +47,48 @@ function saveAlbum(req,res){
     });
 }
 
+function getAlbums(req,res){
+       var artistId= req.params.artist;   
+    if(!artistId){
+        var find = Album.find({}).sort('title');       
+    }else{        
+        var find = Album.find({artist: artistId}).sort('year');      
+    }
+    find.populate({path:'artist'}).exec((err,albums)=>{
+        if (err){
+            res.status(500).send({message : 'error en la peticion del servidor'});        
+        }else{
+            if(!albums){
+            res.status(404).send({message : 'no hay albums'});
+            }else{
+                res.status(200).send(albums);        
+            }
+        }
+    });
+}
 
+function updateAlbum(req,res){
+    var albumId = req.params.id;
+    var update = req.body;
+    Album.findByIdAndUpdate(albumId, update, (err,albumUpdated)=>{
+        if (err){
+            res.status(500).send({message : 'error en la peticion del servidor'});        
+        }else{
+            if(!albumUpdated){
+            res.status(404).send({message : 'No se ha Actualizado el Album'});
+            }else{
+                res.status(200).send({album: albumUpdated});
+            }
+        }
+    });
+
+    
+
+}
 
 module.exports = {
     getAlbum,
-    saveAlbum
+    saveAlbum,
+    getAlbums,
+    updateAlbum
 }
