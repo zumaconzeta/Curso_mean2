@@ -96,14 +96,14 @@ function deleteArtist(req,res){
             if(!artistRemoved){
                 res.status(404).send({message: 'El artista no ha sido eliminado '});
             }else{
-                Album.find({artist:artistRemoved._id}).remove((err,albumRmoved)=>{
+                Album.find({artist:artistRemoved._id}).remove((err,albumRemoved)=>{
                     if(!err){
                         res.status(500).send({message: 'Error al eliminar album'});
                     }else{
-                        if(!albumRmoved){
+                        if(!albumRemoved){
                             res.status(404).send({message: 'El album no ha sido eliminado'}); 
                         }else{
-                            Song.find({album:albumRmoved._id}).remove((err,songRemoved)=>{
+                            Song.find({album:albumRemoved._id}).remove((err,songRemoved)=>{
                                 if(!err){
                                     res.status(500).send({message: 'Error al eliminar la cancion'});
                                 }else{
