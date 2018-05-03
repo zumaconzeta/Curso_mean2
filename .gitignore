@@ -1,4 +1,4 @@
 node_modules/
 db/
-uploads/users
-uploads/artists
+uploads/*
+!uploads/.gitkeep
