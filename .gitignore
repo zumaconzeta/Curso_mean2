@@ -1,3 +1,7 @@
 api/node_modules/
 api/db/
-api/uploads/
+# api/uploads/
+api/uploads/song/*.mp3
+api/uploads/album/*.jpeg
+api/uploads/users/*.jpeg
+api/uploads/artists/*.jpeg
