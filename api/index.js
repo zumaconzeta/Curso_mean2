@@ -7,7 +7,7 @@ var atlas = "mongodb://admin:admin@cluster0-shard-00-00-euqmy.mongodb.net:27017,
 var local = 'mongodb://localhost:27017/curso_mean2';
 
  //mongoose.Promise = global.Promise;
-mongoose.connect(atlas, (err,res) => {
+mongoose.connect(local, (err,res) => {
     if(err){
         //throw err;
         console.log('problema con la conexion con MongoDB');
