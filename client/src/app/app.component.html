@@ -2,18 +2,39 @@
   <h1>
     Welcome to {{ title }}! 
    </h1>
-   <span>
-      {{identity.name}} {{identity.surname}}
-   </span>
-   <span class="btn btn-warning"(click)= "logout()" >
-      cerrar Serrión
-   </span>
+   <nav id="navigation">
+      <a href="#">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        Buscar
+      </a>
+      <a href="#">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        Artisitas
+      </a>
+      <a href="#">
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+          Albums
+      </a>     
+    </nav>
+    <nav id="user_logged" >
+      <span>
+        {{identity.name}} {{identity.surname}}
+    </span>
+    <span class="btn btn-warning"(click)= "logout()" >
+        cerrar Sesión
+    </span>
+    <a href="#">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      Mis datos
+    </a>
+    </nav>
   </div>
 
 <div class="clearfix"></div>
 
 <div *ngIf="identity" class="navigation col-lg-11">
   <p>Estas logueado en la aplicación</p>
+  <user-edit></user-edit>
 </div>
 
 
@@ -77,7 +98,7 @@
           <label>Contraseña</label>
           <input type="password" #password="ngModel" name="password"[(ngModel)]="user_register.password" class="form-control" required/>
           <span *ngIf = "!password.valid && password.touched">
-            Contraeña requerida es Obligatorio
+            Contraseña requerida es Obligatorio
           </span>
         </p>
         <input type="submit" value="Registrar" class="btn btn-primary"/>
