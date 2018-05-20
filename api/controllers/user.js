@@ -86,20 +86,25 @@ function loginUser(req, res){
 
 // Funcion para actualizar datos del usuario 
 function updateUser (req,res) {
-var userId = req.params.id;
-var update = req.body;
+    var userId = req.params.id;
+    var update = req.body;
 
-User.findByIdAndUpdate(userId,update,(err,userUpdated) =>{
-    if (err){
-        res.status(500).send({message: 'Error al Actualizar el Usuario'});
-        }else{
-            if (!userUpdated){
-                res.status(404).send({message: 'no se ha actualizado el usuario'});
+    // valida que el usuario ID sea el mismo del usuario del Token
+    if(userId != req.user.sub){
+      return res.status(500).send({message: 'No tienes permiso par actualizar este usuario'});        
+    }
+
+    User.findByIdAndUpdate(userId,update,(err,userUpdated) =>{
+        if (err){
+            res.status(500).send({message: 'Error al Actualizar el Usuario'});
             }else{
-                res.status(200).send({user: userUpdated});
+                if (!userUpdated){
+                    res.status(404).send({message: 'no se ha actualizado el usuario'});
+                }else{
+                    res.status(200).send({user: userUpdated});
+                }
             }
-        }
-    }) ;
+        }) ;
 }
 
 // Funcionalidad para la Carga de imagen asociada al usuario

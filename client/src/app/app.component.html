@@ -17,13 +17,13 @@
       </a>     
     </nav>
     <nav id="user_logged" >
-      <span>
+      <span id="identity.name">
         {{identity.name}} {{identity.surname}}
     </span>
     <span class="btn btn-warning"(click)= "logout()" >
         cerrar Sesión
     </span>
-    <a href="#">
+    <a [routerLink]="['/mis-datos']" >
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       Mis datos
     </a>
@@ -34,7 +34,7 @@
 
 <div *ngIf="identity" class="navigation col-lg-11">
   <p>Estas logueado en la aplicación</p>
-  <user-edit></user-edit>
+ <router-outlet></router-outlet>
 </div>
 
 
