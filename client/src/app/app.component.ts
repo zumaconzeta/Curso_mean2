@@ -38,7 +38,7 @@ ngOnInit(){
 }
 
 public onSubmit(){
-  console.log(this.user);
+  //console.log(this.user);
 
 
   // conseguir los datos del usuairo
@@ -92,7 +92,7 @@ public onSubmit(){
 
 
 onSubmitRegister(){
-  console.log(this.user_register);
+ // console.log(this.user_register);
   this._userService.register(this.user_register).subscribe( 
     response => {
       let user = response.user;
