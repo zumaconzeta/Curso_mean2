@@ -55,6 +55,9 @@ export class UserEditComponent implements OnInit{
                             this.user.image = result.image;
                             localStorage.setItem('identity',JSON.stringify(this.user));
 
+                            // para actulizar la imagen del menu
+                            let image_path = this.url + 'get-image-user/' + this.user.image;
+                            document.getElementById('image-logged').setAttribute('src',image_path);
                             //console.log(this.user);
                         }
                     );

@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import {UserService} from './services/user.service';
 import {User} from './models/user'
 import { Response } from '@angular/http';
-
+import {GLOBAL} from './services/global';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +18,14 @@ export class AppComponent {
  public token;
  public errorMessage;
  public alertRegister;
+ public url: string;
 
  constructor(
    private _userService:UserService
  ){
   this.user = new User('','','','','','ROLE_USER','');
   this.user_register = new User('','','','','','ROLE_USER','');
+  this.url = GLOBAL.url;    
  }
 
 ngOnInit(){
