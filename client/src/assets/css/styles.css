@@ -1,3 +1,63 @@
-body{
+html, body{
+    margin:  0px;
+    height: 100%;
     background: rgba(60, 92, 199, 0.452);
+}
+
+.head-title{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    display: block;
+}
+.navigation{
+    text-align:center;
+    color: white;
+    background:#1C1C1F;
+    height: 100%;
+}
+
+.navigation a{
+    color:  #ddd;
+    margin-top: 20 px;
+    margin-bottom: 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    color:  rgb(255, 255, 255);  
+}
+
+.navigation .glyphicon{
+    font-size: 25px;
+    display: block;
+    width: 100%;
+}
+
+#user_logged{
+    background:#1C1C1F;
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #444;
+    width: 75%;
+}
+
+#user_logged .user-image{
+    background: #eee;
+    border-radius: 100px;
+    height: 57px;
+    width: 57px;
+    margin: 0px auto;
+    margin-top: 15 px;
+    overflow: hidden;
+}
+
+#user_logged .user-image img{
+ width: 100px;   
+}
+
+.btn-logout{
+    cursor: pointer;
 }
