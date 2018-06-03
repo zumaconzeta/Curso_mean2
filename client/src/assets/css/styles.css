@@ -38,7 +38,7 @@ html, body{
     color:  rgb(255, 255, 255);  
 }
 
-.navigation .glyphicon{
+.navigation .fas{
     font-size: 25px;
     display: block;
     width: 100%;
