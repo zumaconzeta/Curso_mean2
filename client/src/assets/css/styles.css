@@ -12,10 +12,18 @@ html, body{
     display: block;
 }
 .navigation{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
     text-align:center;
     color: white;
-    background:#1C1C1F;
+    background:rgb(0, 0, 0);
     height: 100%;
+}
+
+.central{
+    margin-left: 160px;
 }
 
 .navigation a{
