@@ -7,7 +7,7 @@ import{GLOBAL} from '../services/global';
 
 @Component({
     selector:'artist-list',
-    templateUrl: '../Views/artisi-list.html',
+    templateUrl: '../Views/artist-list.html',
     providers: [UserService]
 })
 
@@ -31,6 +31,6 @@ export class ArtistListComponent implements OnInit{
     ngOnInit(){
         console.log ('artist-list.component.ts cargado');
 
-        // Conseguir el listado de artistas
+        // Conseguir el listado de los artistas
     }
 }

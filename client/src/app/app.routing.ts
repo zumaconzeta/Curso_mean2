@@ -2,11 +2,13 @@ import {ModuleWithProviders} from '@angular/core';
 import {Routes,RouterModule} from '@angular/router';
 
 import {UserEditComponent} from './components/user-edit.component';
+import {ArtistListComponent} from './components/artist-list.component';
 
 const appRoutes : Routes = [
-    {path:'',component:UserEditComponent},
+    {path:'',component:ArtistListComponent},
+    {path:'artists/:page',component:ArtistListComponent},
     {path:'mis-datos',component: UserEditComponent},
-    {path:'**',component:UserEditComponent} // en caso la ruta sea mala    
+    {path:'**',component:ArtistListComponent} // en caso la ruta sea mala    
 ];
 
 // configuracion necesaria para el router

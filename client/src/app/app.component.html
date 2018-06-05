@@ -14,7 +14,7 @@
           <span class="fas fa-star" aria-hidden="true"></span>
         Artisitas
       </a>
-      <a href="#">
+      <a [routerLink]="['/artists',1]" >
           <span class="fas fa-book" aria-hidden="true"></span>
           Albums
       </a>     
@@ -42,7 +42,8 @@
   </div>
 
  
-<div *ngIf="identity" class="central col-lg-11">
+<!-- <div *ngIf="identity" class="central col-lg-11"> -->
+<div [class.hidden]="!identity" class="central col-lg-11"> 
  <!-- <p>Estas logueado en la aplicación</p> -->
  <router-outlet></router-outlet>
 </div>
