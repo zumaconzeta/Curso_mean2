@@ -10,11 +10,11 @@
           <span class="fas fa-search" aria-hidden="true"></span>
         Buscar
       </a>
-      <a href="#">
+          <a [routerLink]="['/artists',1]" [routerLinkActive]="['actived']">
           <span class="fas fa-star" aria-hidden="true"></span>
         Artisitas
       </a>
-      <a [routerLink]="['/artists',1]" >
+      <a href="#">
           <span class="fas fa-book" aria-hidden="true"></span>
           Albums
       </a>     
@@ -26,11 +26,11 @@
       <span id="identity.name">
         {{identity.name}} {{identity.surname}}
     </span>
-    <span class="btn btn-warning" >
+   
         
-    </span>
+    
 
-    <a [routerLink]="['/mis-datos']" >
+    <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']" >
         <span class="fas fa-cog" aria-hidden="true"></span>
       Mis datos
     </a>
