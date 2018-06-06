@@ -9,7 +9,7 @@ const appRoutes : Routes = [
         path:'',
         redirectTo:'/artists/1',
         pathMatch:'full'
-    },
+    },//Pagina Inicial por defecto
     {path:'',component:ArtistListComponent},
     {path:'artists/:page',component:ArtistListComponent},
     {path:'mis-datos',component: UserEditComponent},
