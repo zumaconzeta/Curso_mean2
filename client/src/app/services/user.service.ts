@@ -1,28 +1,27 @@
 import {Injectable} from '@angular/core';
-import {Http,Response, Headers} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 import { map } from 'rxjs/operators';
-//import { of } from 'rxjs';
+// import { of } from 'rxjs';
 
-//import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { isPending } from 'q';
 import {GLOBAL} from './global';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 
-export class UserService{
+export class UserService {
     public identity;
     public token;
     public url: string;
 
-    constructor(private _http: Http){
-        this.url = GLOBAL.url;        
+    constructor(private _http: Http) {
+        this.url = GLOBAL.url;
     }
-    
 
-    signup(user_to_login,gethash = null ){
-        //return 'hola Mundo desde el servicio';
-        if (gethash != null){
+    signup(user_to_login,gethash = null ) {
+        // return 'hola Mundo desde el servicio';
+        if (gethash != null) {
             user_to_login.gethash = gethash;
         }
         let json = JSON.stringify(user_to_login)
@@ -30,20 +29,20 @@ export class UserService{
 
         let headers = new Headers({'Content-Type': 'application/json'});
 
-        return this._http.post(this.url + 'login',params,{headers:headers})
-                            .pipe(map(res =>res.json())); 
+        return this._http.post(this.url + 'login',params, {headers: headers})
+                            .pipe(map(res => res.json()));
     }
 
-    
-    register(user_to_register){
+
+    register(user_to_register) {
         let params = JSON.stringify(user_to_register)
         let headers = new Headers({'Content-Type': 'application/json'});
 
-        return this._http.post(this.url + 'register',params,{headers:headers})
-                            .pipe(map(res =>res.json())); 
+        return this._http.post(this.url + 'register', params, {headers: headers})
+                            .pipe(map(res => res.json()));
     }
 
-    updateUser (user_to_update){
+    updateUser (user_to_update) {
         let params = JSON.stringify(user_to_update)
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -54,24 +53,24 @@ export class UserService{
                             .pipe(map(res =>res.json()));
     }
 
-    getIdentity(){
+    getIdentity() {
         let identity = JSON.parse(localStorage.getItem('identity'));
-        if (identity !="udenfined"){
+        if (identity !== 'udenfined'){
             this.identity = identity;
-        }else{
+        } else {
         this.identity = null;
         }
         return this.identity;
     }
-    
+
     getToken(){
         let token = localStorage.getItem('token');
-        if(token!= "udenfinded"){
+        if (token !== 'udenfinded') {
             this.token = token;
-        }else{
+        } else {
             this.token = null;
         }
-        return this.token
+           return this.token
     }
 
 }

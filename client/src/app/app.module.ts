@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from './components/home.component';
 import {UserEditComponent} from './components/user-edit.component';
 import {ArtistListComponent} from './components/artist-list.component';
+import {ArtistAddComponent} from './components/artist-add.component';
 
 // al declarar estos componentes acá,
 // permite que cualquier acceder a sus directivas dentro que cualquier componentes dentro de sus directivas
@@ -16,7 +17,8 @@ import {ArtistListComponent} from './components/artist-list.component';
     AppComponent,
     HomeComponent,
     UserEditComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    ArtistAddComponent
   ],
   imports: [
     BrowserModule,
