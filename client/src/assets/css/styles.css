@@ -4,6 +4,12 @@ html, body{
     background: rgba(60, 92, 199, 0.452);
 }
 
+/* Estilo para enlaces activados */
+.actived{
+    border-bottom: 4px solid #84BD00;
+    padding-bottom: 4px;
+}
+
 .head-title{
     font-size: 20px;
     font-weight: bold;
@@ -11,7 +17,7 @@ html, body{
     margin-bottom: 25px;
     display: block;
 }
-.navigation{
+.navigation{    
     height: 100%;
     width: 160px;
     position: fixed;
