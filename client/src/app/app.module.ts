@@ -17,8 +17,8 @@ import {ArtistAddComponent} from './components/artist-add.component';
     AppComponent,
     HomeComponent,
     UserEditComponent,
-    ArtistListComponent
-    ,ArtistAddComponent
+    ArtistListComponent,
+    ArtistAddComponent
   ],
   imports: [
     BrowserModule,
