@@ -9,7 +9,7 @@ import {ArtistAddComponent} from './components/artist-add.component';
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'artistas/:page' , component: ArtistListComponent},
-    {path: 'crear-artista' , component: ArtistAddComponent},
+     {path: 'crear-artista' , component: ArtistAddComponent},
     {path: 'mis-datos', component: UserEditComponent},
     {path: '**', component: HomeComponent} // en caso la ruta sea mala
 ];

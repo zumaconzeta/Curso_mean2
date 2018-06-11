@@ -1,6 +1,6 @@
 <h1>{{titulo}}</h1>
 
-<form #fomrArtist="ngForm" (ngSubmit)="onSubmit" class="col-lg-5">
+<form #formArtist="ngForm" (ngSubmit)="onSubmit()" class="col-lg-5">
     <p>
         <label>Nombre</label>
         <input type="text" #name="ngModel" name="name" [(ngModel)]="artist.name" required 
