@@ -42,7 +42,7 @@ export class ArtistEditComponent implements OnInit {
     }
 
     getArtist() {
-        this._route.params.forEach((params: Params) =>{
+        this._route.params.forEach((params: Params) => {
             let id = params['id'];
             this._artistService.getArtist(this.token, id).subscribe(
                 response => {
@@ -66,25 +66,28 @@ export class ArtistEditComponent implements OnInit {
 
     onSubmit() {
         // console.log (this.artist);
-        this._artistService.addArtist(this.token, this.artist).subscribe(
-            response => {
-                // respuesta de la BD
-                if (!response.artist) {
-                    this.alertMessage = 'Error en el servidor';
-                } else {
-                    this.alertMessage = 'El artista e creado Correctamente';
-                    this.artist = response.artist;
-                   //  this._router.navigate(['/editar-artista'], response.artist._id);
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this._artistService.editArtist(this.token, id, this.artist).subscribe(
+                response => {
+                    // respuesta de la BD
+                    if (!response.artist) {
+                        this.alertMessage = 'Error en el servidor';
+                    } else {
+                        this.alertMessage = 'El artista se Actualizado Correctamente';
+                        // this.artist = response.artist;
+                    //  this._router.navigate(['/editar-artista'], response.artist._id);
+                    }
+                },
+                error => {
+                    const errorMessage = <any> error;
+                    if (errorMessage != null) {
+                    const body = JSON.parse(error._body);
+                    this.alertMessage = body.message;
+                    console.log(error);
+                    }
                 }
-            },
-            error => {
-                const errorMessage = <any> error;
-                if (errorMessage != null) {
-                  const body = JSON.parse(error._body);
-                  this.alertMessage = body.message;
-                  console.log(error);
-                }
-              }
-        );
+            );
+        });
     }
 }

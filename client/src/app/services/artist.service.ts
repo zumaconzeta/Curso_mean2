@@ -15,7 +15,7 @@ export class ArtistService {
         this.url = GLOBAL.url;
     }
 
-    getArtists(token, page){
+    getArtists(token, page) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
@@ -24,7 +24,7 @@ export class ArtistService {
         return this._http.get(this.url + 'artists/' + page, options).pipe(map(res => res.json()));
     }
 
-    getArtist(token, id: string){
+    getArtist(token, id: string) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
@@ -53,7 +53,7 @@ export class ArtistService {
         .pipe(map(res => res.json()));
     }
 
-    deleteArtist(token, id: string){
+    deleteArtist(token, id: string) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
