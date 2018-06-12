@@ -1,5 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import {UserService} from '../services/user.service';
+import {UploadService} from '../services/upload.service';
 import {ArtistService} from '../services/artist.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
@@ -9,7 +10,7 @@ import {GLOBAL} from '../services/global';
 @Component({
     selector: 'artist-edit',
     templateUrl: '../Views/artist-add.html',
-    providers: [UserService, ArtistService]
+    providers: [UserService, ArtistService, UploadService]
 })
 
 export class ArtistEditComponent implements OnInit {
@@ -20,14 +21,16 @@ export class ArtistEditComponent implements OnInit {
     public url: string;
     public alertMessage;
     public is_edit;
+    public filesToUpload: Array<File>;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
         private _userservice: UserService,
-        private _artistService: ArtistService
+        private _artistService: ArtistService,
+        private _uploadService: UploadService
     ) {
-        this.titulo = 'Crear Nuevo Artista';
+        this.titulo = 'Editar Artista';
         this.identity = this._userservice.getIdentity();
         this.token = this._userservice.getToken();
         this.url = GLOBAL.url;
@@ -77,6 +80,17 @@ export class ArtistEditComponent implements OnInit {
                         this.alertMessage = 'El artista se Actualizado Correctamente';
                         // this.artist = response.artist;
                     //  this._router.navigate(['/editar-artista'], response.artist._id);
+                    // Subir la imagen del artista
+                        this._uploadService.makeFileRequest(
+                            this.url + 'upload-image-artist/' + id, [], this.filesToUpload, this.token, 'image')
+                            .then(
+                                (result) => {
+                                    this._router.navigate(['/artistas', 1]);
+                                },
+                                (error) => {
+                                    console.log(error);
+                                }
+                            );
                     }
                 },
                 error => {
@@ -90,4 +104,9 @@ export class ArtistEditComponent implements OnInit {
             );
         });
     }
+
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <Array<File>>fileInput.target.files;
+    }
+
 }

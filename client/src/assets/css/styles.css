@@ -75,3 +75,7 @@ html, body{
 .btn-logout{
     cursor: pointer;
 }
+
+.artist_iamge_for_esit{
+    width: 150px;
+}
