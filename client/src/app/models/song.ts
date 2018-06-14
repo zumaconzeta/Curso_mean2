@@ -5,5 +5,5 @@ export class Song {
         public dutation: string,
         public file: string,
         public album: string
-    ){}
+    ) {}
 }
