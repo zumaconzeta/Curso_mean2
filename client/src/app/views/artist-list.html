@@ -3,6 +3,13 @@
      
         <a [routerLink]="['/crear-artista']" *ngIf=" identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
                 Agregar Artista
-        </a>        
-  
+        </a>                
+
 </div>
+
+<div class="clearfix"></div>
+<ul class="artist-list" *ngIf="identity">
+        <li *ngFor ="let artist of artists" class="col-leg-3 artist-it">
+                {{artist.name}}
+        </li>        
+</ul>
