@@ -10,6 +10,7 @@ import {UserEditComponent} from './components/user-edit.component';
 import {ArtistListComponent} from './components/artist-list.component';
 import {ArtistAddComponent} from './components/artist-add.component';
 import {ArtistEditComponent} from './components/artist-edit.component';
+import {ArtistdetailComponent} from './components/artist-detail.component';
 
 // al declarar estos componentes acá,
 // permite que cualquier acceder a sus directivas dentro que cualquier componentes dentro de sus directivas
@@ -20,7 +21,8 @@ import {ArtistEditComponent} from './components/artist-edit.component';
     UserEditComponent,
     ArtistListComponent,
     ArtistAddComponent,
-    ArtistEditComponent
+    ArtistEditComponent,
+    ArtistdetailComponent
   ],
   imports: [
     BrowserModule,
