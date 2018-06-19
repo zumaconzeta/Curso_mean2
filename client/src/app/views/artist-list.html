@@ -11,10 +11,10 @@
 </div>
 
 <div class="clearfix"></div>
-<ul class="row artists-list" *ngIf="identity">
+<ul class="row artist-list" *ngIf="identity">
         <li *ngFor ="let artist of artists" class="col artist-item">
                 <div class="artist-image">
-                        <img src= "{{ url + 'get-image-artist/' + artist.image }}" style="width: 100px" />
+                        <img src= "{{ url + 'get-image-artist/' + artist.image }}" />
                 </div>
                 <div class="artist-name">
                         <a href="#">                                
