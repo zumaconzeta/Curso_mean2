@@ -7,6 +7,8 @@ import {ArtistListComponent} from './components/artist-list.component';
 import {ArtistAddComponent} from './components/artist-add.component';
 import {ArtistEditComponent} from './components/artist-edit.component';
 import {ArtistdetailComponent} from './components/artist-detail.component';
+import {AlbumAddComponent} from './components/album-add.component';
+
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -14,9 +16,10 @@ const appRoutes: Routes = [
     {path: 'crear-artista' , component: ArtistAddComponent},
     {path: 'editar-artista/:id' , component: ArtistEditComponent},
     {path: 'artista/:id' , component: ArtistdetailComponent},
+    {path: 'crear-album/:artist', component: AlbumAddComponent},
     {path: 'mis-datos', component: UserEditComponent},
     {path: '**', component: HomeComponent} // en caso la ruta sea mala
-];
+    ];
 
 // configuracion necesaria para el router
 export const appRoutingProviders: any[] = [];
