@@ -53,6 +53,7 @@ export class ArtistEditComponent implements OnInit {
                         this._router.navigate(['/']);
                     } else {
                          this.artist = response.artist;
+                         // Sacar losalbums del artistas
                     }
                 },
                 error => {
