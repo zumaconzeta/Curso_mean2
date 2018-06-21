@@ -15,6 +15,13 @@ html, body{
     overflow-y: scroll;
 }
 
+.seguro{
+    margin-top: -33px;
+    background: #222326;    
+    height: 40px;
+    position: absolute;
+}
+
 .head-title{
     font-size: 20px;
     font-weight: bold;

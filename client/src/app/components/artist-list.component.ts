@@ -20,6 +20,7 @@ export class ArtistListComponent implements OnInit {
     public url: string;
     public next_page;
     public prev_page;
+    public confirmado;
 
     constructor(
         private _route: ActivatedRoute,
@@ -61,13 +62,39 @@ export class ArtistListComponent implements OnInit {
                     }
                 },
                 error => {
-                    const errorMessage = <any> error;
+                    let errorMessage = <any> error;
                     if (errorMessage != null) {
-                      const body = JSON.parse(error._body);
+                      let body = JSON.parse(error._body);
                       console.log(error);
                     }
                   }
             );
         });
+    }
+    onDeleteConfirm(id) {
+     this.confirmado = id;
+    }
+
+    onCancelArtist() {
+        this.confirmado = null;
+    }
+
+    onDeleteArtist(id) {
+        this._artistService.deleteArtist(this.token, id).subscribe(
+            response => {
+                if (!response.artist) {
+                    alert('Error en el servidor');
+                }
+                // this.getArtists();
+            },
+            error => {
+                let errorMessage = <any> error;
+                if (errorMessage != null) {
+                  let body = JSON.parse(error._body);
+                  console.log(error);
+                }
+              }
+        );
+        this.getArtists();
     }
 }
