@@ -33,6 +33,8 @@ function saveAlbum(req,res){
     album.image = 'null';    
     album.artist = params.artist;
 
+    console.log ('Entrando en la Funcion SaveAlbum del APi');
+
     album.save((err,albumStored) => {
         if (err){
             res.status(500).send({message : 'error en la peticion del servidor'});
