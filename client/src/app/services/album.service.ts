@@ -14,7 +14,7 @@ export class AlbumService {
     }
 
     addAlbum (token, album: Album) {
-        console.log('Hola Programador ' + this.url + 'album');
+       // console.log('Hola Programador ' + this.url + 'album');
         let params = JSON.stringify(album);
         let headers = new Headers({
             'Content-Type': 'application/json',
