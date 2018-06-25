@@ -33,7 +33,7 @@ function saveAlbum(req,res){
     album.image = 'null';    
     album.artist = params.artist;
 
-    console.log ('Entrando en la Funcion SaveAlbum del APi');
+    
 
     album.save((err,albumStored) => {
         if (err){
@@ -70,10 +70,12 @@ function getAlbums(req,res){
 }
 
 function updateAlbum(req,res){
+   
     var albumId = req.params.id;
     var update = req.body;
     Album.findByIdAndUpdate(albumId, update, (err,albumUpdated)=>{
         if (err){
+           // console.log (err);
             res.status(500).send({message : 'error en la peticion del servidor'});        
         }else{
             if(!albumUpdated){

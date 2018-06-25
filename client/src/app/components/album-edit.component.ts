@@ -4,11 +4,12 @@ import {AlbumService} from '../services/album.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {GLOBAL} from '../services/global';
 import {Album} from '../models/album';
+import {UploadService} from '../services/upload.service';
 
 @Component({
     selector: 'album-edit',
     templateUrl: '../Views/album-add.html',
-    providers: [UserService, AlbumService]
+    providers: [UserService, AlbumService, UploadService]
 })
 
 export class AlbumEditComponent implements OnInit {
@@ -19,12 +20,14 @@ export class AlbumEditComponent implements OnInit {
     public url: string;
     public alertMessage;
     public is_edit;
+    public filesToUpload: Array<File>;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
         private _userservice: UserService,
-        private _albumservice: AlbumService
+        private _albumservice: AlbumService,
+        private _uploadService: UploadService
     ) {
         this.titulo = 'Editar Album';
         this.identity = this._userservice.getIdentity();
@@ -35,22 +38,57 @@ export class AlbumEditComponent implements OnInit {
     }
 
     ngOnInit() {
-       // console.log('Componente AlbumAddComponent Cargado');
+        console.log('Componente AlbumEditComponent Cargado');
+        // conseguir el album
+        this.getAlbum();
+    }
+
+    getAlbum() {
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this._albumservice.getAlbum(this.token, id).subscribe(
+                response => {
+                    if (!response.album) {
+                        this._router.navigate(['/']);
+                    } else {
+                        this.album = response.album;
+                    }
+                },
+                error => {
+                    const errorMessage = <any> error;
+                    if (errorMessage != null) {
+                      const body = JSON.parse(error._body);
+                      console.log(error);
+                    }
+                  }
+            );
+        });
     }
 
     onSubmit() {
         this._route.params.forEach((params: Params) => {
-            let artist_id = params['artist'];
-            this.album.artist = artist_id;
-            this._albumservice.addAlbum(this.token, this.album).subscribe(
+            let id = params['id'];
+            this._albumservice.editAlbum(this.token, id, this.album).subscribe(
                 response => {
                     // respuesta de la BD
                     if (!response.album) {
                         this.alertMessage = 'Error en el servidor';
                     } else {
-                        this.alertMessage = 'El Album se creado Correctamente';
-                        this.album = response.album;
-                        // this._router.navigate(['/editar-artista', response.artist._id]);
+                        this.alertMessage = 'El Album se ha Actualizado Correctamente';
+                        if (!this.filesToUpload) {
+                            // Redirigir
+                        } else {
+                            this._uploadService.makeFileRequest(
+                            this.url + 'upload-image-album/' + id, [], this.filesToUpload, this.token, 'image')
+                            .then(
+                                (result) => {
+                                    this._router.navigate(['/artista', response.album.artist]);
+                                },
+                                (error) => {
+                                    console.log(error);
+                                }
+                            );
+                        }
                     }
                 },
                 error => {
@@ -63,5 +101,9 @@ export class AlbumEditComponent implements OnInit {
                   }
             );
         });
+    }
+
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <Array<File>>fileInput.target.files;
     }
 }
