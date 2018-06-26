@@ -2,20 +2,23 @@ import {Component, OnInit } from '@angular/core';
 import {UserService} from '../services/user.service';
 
 import {ArtistService} from '../services/artist.service';
+import {AlbumService} from '../services/album.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
 import {Artist} from '../models/artist';
+import {Album} from '../models/album';
 import {GLOBAL} from '../services/global';
 
 @Component({
     selector: 'artist-detail',
     templateUrl: '../Views/artist-detail.html',
-    providers: [UserService, ArtistService]
+    providers: [UserService, ArtistService, AlbumService]
 })
 
 export class ArtistdetailComponent implements OnInit {
     public titulo: string;
     public artist: Artist;
+    public albums: Album[];
     public identity;
     public token;
     public url: string;
@@ -25,7 +28,8 @@ export class ArtistdetailComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userservice: UserService,
-        private _artistService: ArtistService
+        private _artistService: ArtistService,
+        private _albumService: AlbumService
     ) {
         this.identity = this._userservice.getIdentity();
         this.token = this._userservice.getToken();
@@ -47,6 +51,24 @@ export class ArtistdetailComponent implements OnInit {
                         this._router.navigate(['/']);
                     } else {
                          this.artist = response.artist;
+
+                         this._albumService.getAlbums(this.token, response.artist._id).subscribe(
+                            response => {
+                                if (!response.albums) {
+                                    this.alertMessage = 'Este artista no tiene Albums';
+                                } else {
+                                    this.albums = response.albums;
+                                }
+                             },
+                            error => {
+                                const errorMessage = <any> error;
+                                if (errorMessage != null) {
+                                  const body = JSON.parse(error._body);
+                                  // this.alertMessage = body.message;
+                                  console.log(error);
+                                }
+                              }
+                         );
                     }
                 },
                 error => {
