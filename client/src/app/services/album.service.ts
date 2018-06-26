@@ -15,14 +15,17 @@ export class AlbumService {
     }
 
     getAlbums(token, artistId = null) {
+
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
         });
         let options = new RequestOptions({headers: headers});
         if (artistId == null) {
+            // console.log('getAlbums Null');
             return this._http.get(this.url + 'albums', options).pipe(map(res => res.json()));
         } else {
+           // console.log('getAlbums con cansiones');
             return this._http.get(this.url + 'albums/' + artistId, options).pipe(map(res => res.json()));
         }
     }

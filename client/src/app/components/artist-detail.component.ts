@@ -51,20 +51,20 @@ export class ArtistdetailComponent implements OnInit {
                         this._router.navigate(['/']);
                     } else {
                          this.artist = response.artist;
-
                          this._albumService.getAlbums(this.token, response.artist._id).subscribe(
-                            response => {
-                                if (!response.albums) {
+                            resp => {
+                                if (!resp.albums) {
                                     this.alertMessage = 'Este artista no tiene Albums';
+                                   // console.log(resp);
                                 } else {
-                                    this.albums = response.albums;
+                                   this.albums = resp.albums;
                                 }
                              },
                             error => {
                                 const errorMessage = <any> error;
                                 if (errorMessage != null) {
                                   const body = JSON.parse(error._body);
-                                  // this.alertMessage = body.message;
+                                   this.alertMessage = body.message;
                                   console.log(error);
                                 }
                               }
@@ -75,7 +75,7 @@ export class ArtistdetailComponent implements OnInit {
                     const errorMessage = <any> error;
                     if (errorMessage != null) {
                       const body = JSON.parse(error._body);
-                      // this.alertMessage = body.message;
+                       this.alertMessage = body.message;
                       console.log(error);
                     }
                   }

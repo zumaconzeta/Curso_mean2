@@ -88,11 +88,12 @@ html, body{
     cursor: pointer;
 }
 
-.artist_image_for_edit img
+.artist_image_for_edit img,
 .album_image_for_edit img{
     width: 150px;
 }
-.artist-list{
+.artist-list,
+.album-list{
     margin: 0px;
     padding: 0px;
     margin-top: 30px;
@@ -109,7 +110,14 @@ html, body{
     margin-top: 20px;
 }
 
-.artist-item .artist-image{
+.album-item{
+    width: 100%;
+   
+}
+
+
+.artist-item .artist-image,
+.album-item .album-image{
     height: 245px;
     width: 100%;
     overflow: hidden;
@@ -121,14 +129,20 @@ html, body{
     height: 100%;
 }
 
-.artist-item .artist-name{
+.album-item .album-image img{
+    width: 100%
+}
+
+.artist-item .artist-name,
+album-item .album-name{
     color: white;
     padding: 10px;
     background: #222326;
 
 }
 
-.artist-item .artist-name a{
+.artist-item .artist-name a,
+album-item .album-name a{
     color: white;
 }
 
