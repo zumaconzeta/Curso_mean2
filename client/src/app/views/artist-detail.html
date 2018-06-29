@@ -41,7 +41,7 @@
                     </div> 
             </div>
 
-             <div class="seguro" *ngIf="confirmado == album._id">
+             <div class="seguro-album" *ngIf="confirmado == album._id">
                     <a (click)="onDeleteAlbum(album._id)" class="btn btn-sm btn-danger">Eliminar</a>
                     <a (click)="onCancelAlbum()" class="btn btn-sm btn-primary">Cancelar</a>
          </div>  

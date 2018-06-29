@@ -23,6 +23,7 @@ export class ArtistdetailComponent implements OnInit {
     public token;
     public url: string;
     public alertMessage;
+    public confirmado;
 
     constructor(
         private _route: ActivatedRoute,
@@ -43,6 +44,7 @@ export class ArtistdetailComponent implements OnInit {
     }
 
     getArtist() {
+        console.log ('entrando a getArtist');
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
             this._artistService.getArtist(this.token, id).subscribe(
@@ -83,4 +85,34 @@ export class ArtistdetailComponent implements OnInit {
         });
     }
 
+    onDeleteConfirm(id) {
+        this.confirmado = id;
+
+    }
+
+    onCancelAlbum() {
+        this.confirmado = null;
+    }
+
+    onDeleteAlbum(id) {
+        this._albumService.deleteAlbum(this.token, id).subscribe(
+            responce => {
+                if (!responce.album) {
+                    this.alertMessage = 'Error en el Servidor';
+                } else {
+                    console.log('esto es una prueba 8');
+                   this.getArtist();
+                }
+             },
+            error => {
+                console.log('esto es una prueba 9');
+                const errorMessage = <any> error;
+                if (errorMessage != null) {
+                  const body = JSON.parse(error._body);
+                   this.alertMessage = body.message;
+                  console.log(error);
+                }
+              }
+        );
+    }
 }

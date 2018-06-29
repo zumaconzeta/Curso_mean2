@@ -21,6 +21,10 @@ html, body{
     height: 40px;
     position: absolute;
 }
+.seguro-album{
+    margin-top: -41px;
+    margin-left: 10px;
+}
 
 .head-title{
     font-size: 20px;
