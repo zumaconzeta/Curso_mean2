@@ -13,6 +13,7 @@ import {ArtistEditComponent} from './components/artist-edit.component';
 import {ArtistdetailComponent} from './components/artist-detail.component';
 import {AlbumAddComponent} from './components/album-add.component';
 import {AlbumEditComponent} from './components/album-edit.component';
+import {AlbumDetailComponent} from './components/album-detail.component';
 
 // al declarar estos componentes acá,
 // permite que cualquier acceder a sus directivas dentro que cualquier componentes dentro de sus directivas
@@ -26,7 +27,8 @@ import {AlbumEditComponent} from './components/album-edit.component';
     ArtistEditComponent,
     ArtistdetailComponent,
     AlbumAddComponent,
-    AlbumEditComponent
+    AlbumEditComponent,
+    AlbumDetailComponent
   ],
   imports: [
     BrowserModule,
